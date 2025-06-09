@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+        <link type="text/css" href="{% static 'css/styles.css' %}" rel="stylesheet">
+	</head>
+    <body>
+        <div style="justify-content: right; display:flex;">
+            <button name="change">Изменить студентов</button>
+            <button name="change">Изменить предметы</button>
+        </div>
+        <h1 style="text-align: center;">Успеваемость студентов</h1>
+        <div style="justify-content: center; display: flex;">
+            <table style="border-spacing: 0; margin-right: 3px">
+                <tr><td><button style="background-color: rgb(33, 52, 224);">Добавить студента</button></td></tr>
+                {% for i in students %}
+                    <tr><td style="text-align: right"><button style="background-color: #b81c1c;">Удалить</button></td></tr>
+                {% endfor %}
+            </table>
+            <table style="border-spacing: 0;">
+                <thead>
+                    <tr>
+                        <th name="st">Id</th>
+                        <th name="st">ФИО</th>
+                        {% for subject in subjects %}
+                            <th name="st">{{subject}}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td name="st">{{student.id}}</td>
+                            <td name="st">{{student.fio}}</td>
+                            {% for score in scores %}
+                                {% if score.student == student %}
+                                    <td name="st">{{score.value}}</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </tabel>
+        </div>
+	</body>
+</html>
