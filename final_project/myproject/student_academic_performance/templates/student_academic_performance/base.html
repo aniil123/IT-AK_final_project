@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+        <link type="text/css" rel="stylesheet" href="{% static 'student_academic_performance/css/styles.css' %}">
+	</head>
+    <body>
+        <div style="display: grid;">
+            {% block main_buttons %}
+                <!--Добавление главных кнопок-->
+            {% endblock %}
+            <h1 style="justify-self: center; margin-bottom: 40px">Успеваемость студентов</h1>
+        </div>
+        <table style="margin: 0 auto 0 auto; border-spacing: 0;">
+            <thead>
+                <tr>
+                    <th name="st">Id</th>
+                    <th name="st">ФИО</th>
+                    <th name="st">Почта</th>
+                    {% block subjects %}
+                        <!--Добавление предметов в таблицу-->
+                    {% endblock %}
+                </tr>
+            </thead>
+            <tbody>
+                {% block students_data %}
+                    <!--Добавление данных студентов-->
+                {% endblock %}
+            </tbody>
+        </tabel>
+	</body>
+</html>

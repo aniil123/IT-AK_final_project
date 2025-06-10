@@ -1,0 +1,26 @@
+{% extends 'student_academic_performance/base.html' %}
+
+{% block main_buttons %}
+    <a href="{% url 'editing' %}" style="position: absolute; justify-self: right;">
+        <button name="change">Изменить</button>
+    </a>
+{% endblock %}
+
+{% block subjects %}
+    {% for subject in subjects %}
+        <th name="st">{{subject}}</th>
+    {% endfor %}
+{% endblock %}
+
+{% block students_data %}
+    {% for student, subjects_scores in students_data %}
+        <tr>
+            <td name="st">{{student.id}}</td>
+            <td name="st">{{student.fio}}</td>
+            <td name="st">{{student.email}}</td>
+            {% for score in subjects_scores %}
+                <td name="st">{{score}}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+{% endblock %}

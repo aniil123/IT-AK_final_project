@@ -9,9 +9,6 @@ class Student(models.Model):
     def fio(self):
         return f'{self.name} {self.surname}'
 
-    def __str__(self):
-        return f'{self.fio} ({self.email})'
-
     def __repr__(self):
         return f'Student(name="{self.name}", surname="{self.surname}", email="{self.email}")'
     

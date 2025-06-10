@@ -1,0 +1,26 @@
+{% extends 'student_academic_performance/base.html' %}
+
+{% block main_buttons %}
+    <button name="change" style="position: absolute; justify-self: right;">Изменить</button>
+{% endblock %}
+
+{% block subjects %}
+    {% for subject in subjects %}
+        <th name="st">
+            <input value="{{subject}}"/>
+        </th>
+    {% endfor %}
+{% endblock %}
+
+{% block students_data %}
+    {% for student, subjects_scores in students_data %}
+        <tr>
+            <td name="st">{{student.id}}</td>
+            <td name="st"><input value="{{student.fio}}"/></td>
+            <td name="st"><input value="{{student.email}}"/></td>
+            {% for score in subjects_scores %}
+                <td name="st"><input value="{{score}}"/></td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+{% endblock %}
