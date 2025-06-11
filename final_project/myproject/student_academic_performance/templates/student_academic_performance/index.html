@@ -1,26 +1,46 @@
 {% extends 'student_academic_performance/base.html' %}
 
 {% block main_buttons %}
-    <a href="{% url 'editing' %}" style="position: absolute; justify-self: right;">
-        <button name="change">Изменить</button>
+    <a href="{% url 'add_student' %}" style="position: absolute; justify-self: right;">
+        <input type="button" value="Добавить студента" style="background-color: rgb(202, 233, 27);"/>
     </a>
 {% endblock %}
 
-{% block subjects %}
-    {% for subject in subjects %}
-        <th name="st">{{subject}}</th>
-    {% endfor %}
+{% block heading %}
+    Успеваемость студентов
 {% endblock %}
 
-{% block students_data %}
-    {% for student, subjects_scores in students_data %}
-        <tr>
-            <td name="st">{{student.id}}</td>
-            <td name="st">{{student.fio}}</td>
-            <td name="st">{{student.email}}</td>
-            {% for score in subjects_scores %}
-                <td name="st">{{score}}</td>
+{% block content %}
+    <table style="margin: 0 auto 0 auto; border-spacing: 0;">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ФИО</th>
+                <th>Почта</th>
+                {% for subject in subjects %}
+                    <th>{{subject}}</th>
+                {% endfor %}
+                <th>Средняя оценка студента</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student, subjects_scores, student_average_grade in students_data %}
+                <tr>
+                    <td>{{student.id}}</td>
+                    <td>{{student.fio}}</td>
+                    <td>{{student.email}}</td>
+                    {% for score in subjects_scores %}
+                        <td>{{score}}</td>
+                    {% endfor %}
+                    <td class="average_grade">{{student_average_grade}}</td>
+                </tr>
             {% endfor %}
-        </tr>
-    {% endfor %}
+            <tr>
+                <td class="average_grade" colspan="3">Средние оценки по предметам</td>
+                {% for average_grade in subjects_average_grade %}
+                    <td class="average_grade">{{average_grade}}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </tabel>
 {% endblock %}

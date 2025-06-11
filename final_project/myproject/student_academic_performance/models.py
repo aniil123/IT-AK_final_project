@@ -14,7 +14,7 @@ class Student(models.Model):
     
 
 class Subject(models.Model):
-    name = models.CharField(max_length=20, null=False)
+    name = models.CharField(max_length=20, null=False, unique=True)
 
     def __str__(self):
         return self.name
@@ -26,7 +26,7 @@ class Subject(models.Model):
 class Score(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    value = models.FloatField(blank=False, null=False)
+    value = models.IntegerField(blank=False, null=False)
 
     def __str__(self):
         return f'{self.student.fio}: {self.subject} -> {self.value:.2f}'

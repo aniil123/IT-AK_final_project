@@ -1,19 +1,30 @@
-th[name="st"] {
+* {
+    font-family: Arial;
+}
+.average_grade {
+    background-color: rgba(149, 218, 250, 0.377);
+    outline: 0.5px solid rgb(144, 174, 238)
+}
+th {
     text-align: left;
     background-color: #e8ecec;
 }
-td[name="st"] {
+td {
     background-color: rgb(249, 248, 255);
 }
-th[name="st"], td[name="st"] {
+th, td {
+    outline: 1px solid rgb(133, 146, 146);
     height: 27px;
     padding-right: 25px;
 }
-button {
-    height: 30px;
-    width: 80px;
+input {
+    font-family: Verdana, sans-serif;
+    border-radius: 5px;
 }
-button[name="change"] {
-    margin: 10px 10px 0 0;
-    background-color: rgb(202, 233, 27);
+input[type="button"] {
+    height: 28px;
+    margin: 5px;
+}
+input[type="text"]:focus {
+    background-color: rgb(231, 230, 245);
 }
