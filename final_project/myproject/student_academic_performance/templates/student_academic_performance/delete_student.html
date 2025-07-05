@@ -1,0 +1,19 @@
+{% extends 'student_academic_performance/base.html' %}
+
+{% block main_buttons %}
+    <a href="{% url 'viewing' %}" style="position: absolute; justify-self: right;">
+        <input type="button" value="Главная" style="background-color: rgb(41, 56, 187);"/>
+    </a>
+{% endblock %}
+
+{% block heading %}
+    Удаление студента
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'delete_student' %}" method="post" style="justify-self: center;">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Удалить</button>
+    </form>
+{% endblock %}

@@ -20,6 +20,14 @@ class AddScoreForm(forms.ModelForm):
             ], attrs={'class': 'form-control'})
         }
 
-
+class AddSubjectForm(forms.ModelForm):
+    class Meta:
+        model = Subject
+        fields = ['name']
     
+class SelectStudentForm(forms.Form):
+    id = forms.CharField(max_length=4)
+
+class SelectSubjectForm(forms.Form):
+    name = forms.CharField(max_length=20)
     

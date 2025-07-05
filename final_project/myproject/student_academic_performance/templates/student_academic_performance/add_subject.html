@@ -1,0 +1,38 @@
+{% extends 'student_academic_performance/base.html' %}
+
+{% block main_buttons %}
+    <a href="{% url 'viewing' %}" style="position: absolute; justify-self: right;">
+        <input type="button" value="Главная" style="background-color: rgb(41, 56, 187);"/>
+    </a>
+{% endblock %}
+
+{% block heading %}
+    Добавление нового предмета
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'add_subject' %}" method="post" style="justify-self: center; justify-content: center;">
+        {% csrf_token %}
+        <div style="position: absolute; left: 26%; top: 15%;">
+            <font size="5">Новый предмет</font> <br>
+            <p>
+                <label for='{{subject_form.name.id_for_label}}'>
+                    {{subject_form.name.label}}
+                </label> <br>
+                {{subject_form.name}}
+            </p>
+        </div>
+        <div style="position: absolute; left: 46%; top: 15%;">
+            <font size="5">Оценки по новому предмету у студентов</font> <br>
+            {% for score_form in score_forms %}
+                <p>
+                    <label for='{{score_form.value.id_for_label}}'>
+                        {{score_form.value.label}}
+                    </label> <br>
+                    {{score_form.value}}
+                </p>
+            {% endfor %}
+        </div>
+        <button type="submit" style="position: absolute; left: 26%; top: 25%;">Добавить</button>
+    </form>
+{% endblock %}
